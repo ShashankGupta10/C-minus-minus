@@ -1,2 +1,2 @@
 def maxMemoryBlocks(n, a, b, c):
-    print("dynamic programming question")
+    print("DP question will solve later")
