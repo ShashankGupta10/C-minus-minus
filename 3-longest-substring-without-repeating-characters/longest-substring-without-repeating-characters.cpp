@@ -1,26 +1,25 @@
-#include <iostream>
-#include <string>
-#include <unordered_set>
-
 class Solution {
 public:
-    int lengthOfLongestSubstring(std::string s) {
+    int lengthOfLongestSubstring(string s) {
         int max_len = 0;
-        std::unordered_set<char> char_set;
-        int left = 0;
-        int right = 0;
-
-        while (right < s.length()) {
-            // Try to extend the window to the right
-            if (char_set.find(s[right]) == char_set.end()) {
-                char_set.insert(s[right]);
-                max_len = std::max(max_len, right - left + 1);
-                right++;
+        string non_repeated_str = "";
+        
+        for (auto it : s) {
+            if (non_repeated_str.find(it) == string::npos) {
+                non_repeated_str += it;
             } else {
-                // Shrink the window from the left
-                char_set.erase(s[left]);
-                left++;
+                int str_len = non_repeated_str.size();
+                if (str_len > max_len) {
+                    max_len = str_len;
+                }
+                non_repeated_str = non_repeated_str.substr(non_repeated_str.find(it) + 1) + it;
             }
+        }
+
+        // Check if the last non-repeated substring is longer than max_len.
+        int str_len = non_repeated_str.size();
+        if (str_len > max_len) {
+            max_len = str_len;
         }
 
         return max_len;
