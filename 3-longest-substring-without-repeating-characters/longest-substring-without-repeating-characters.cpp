@@ -16,7 +16,6 @@ public:
             }
         }
 
-        // Check if the last non-repeated substring is longer than max_len.
         int str_len = non_repeated_str.size();
         if (str_len > max_len) {
             max_len = str_len;
