@@ -1,19 +1,25 @@
 #include <vector>
-#include <unordered_map>
+#include <algorithm>
 
 class Solution {
 public:
     int maxOperations(vector<int>& nums, int k) {
-        std::unordered_map<int, int> freqMap;
+        sort(nums.begin(), nums.end());
+        int i = 0;
+        int j = nums.size() - 1;
         int operations = 0;
 
-        for (int num : nums) {
-            int complement = k - num;
-            if (freqMap[complement] > 0) {
+        while (i < j) {
+            int sum = nums[i] + nums[j];
+
+            if (sum == k) {
                 operations++;
-                freqMap[complement]--;
+                i++;
+                j--;
+            } else if (sum > k) {
+                j--;
             } else {
-                freqMap[num]++;
+                i++;
             }
         }
 
