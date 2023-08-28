@@ -1,22 +1,29 @@
+#include <algorithm>
+#include <sstream>
+
 class Solution {
 public:
     string reverseWords(string s) {
-        string temp="",ans="";
-        for(int i=0;i<s.size();i++){
-            if(s[i]!=' '){
-                temp+=s[i];
-            }
-            else if(s[i]==' ' && temp!=""){
-                ans=temp+" "+ans;
-                temp="";
-            }
-            else{
-                continue;
-            }
+        stringstream ss(s);
+        string word, rev_string;
+        vector<string> v;
+
+        while (ss >> word) {
+            v.push_back(word);
         }
-        if(temp!=""){
-            ans=temp+" "+ans;
+
+        reverse(v.begin(), v.end());
+
+        // Concatenate the reversed words to form the final result
+        for (const auto& it : v) {
+            rev_string += it + " ";
         }
-        return ans.substr(0,ans.size()-1);
+
+        // Remove the extra space at the end
+        if (!rev_string.empty()) {
+            rev_string.pop_back();
+        }
+
+        return rev_string;
     }
 };
