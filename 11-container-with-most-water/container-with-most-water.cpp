@@ -1,25 +1,19 @@
-#include <vector>
-#include <algorithm>
-
 class Solution {
 public:
     int maxArea(vector<int>& height) {
-        int n = height.size();
-        int max_vol = 0;
-        int left = 0;
-        int right = n - 1;
-
-        while (left < right) {
-            int comp = min(height[left], height[right]) * (right - left);
-            max_vol = max(max_vol, comp);
-
-            if (height[left] < height[right]) {
-                left++;
-            } else {
-                right--;
+        int max_area = 0;
+        int i=0, j=height.size()-1;
+        while (i<j) {
+            int area = (j-i)*min(height[i], height[j]);
+            max_area = max(area, max_area);
+            if (height[i]<height[j]) {
+                i++;
             }
-        }
+            else {
+                j--;
+            }
 
-        return max_vol;
+        }
+        return max_area;
     }
 };
