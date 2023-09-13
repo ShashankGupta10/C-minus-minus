@@ -4,8 +4,7 @@ public:
         int max_area = 0;
         int i=0, j=height.size()-1;
         while (i<j) {
-            int area = (j-i)*min(height[i], height[j]);
-            max_area = max(area, max_area);
+            max_area = max((j-i)*min(height[i], height[j]), max_area);
             if (height[i]<height[j]) {
                 i++;
             }
