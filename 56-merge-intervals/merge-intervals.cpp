@@ -1,7 +1,6 @@
 class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
-        vector<vector<int>> res;
         sort(intervals.begin(), intervals.end());
         for (int i=0;i<intervals.size()-1;i++) {
             if (intervals[i][1] >= intervals[i+1][0]) {
