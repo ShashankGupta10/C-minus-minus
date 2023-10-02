@@ -10,6 +10,6 @@ public:
                 num >>= 1;
             }
         }
-        return steps; // Convert back to int if needed
+        return steps; 
     }
 };
