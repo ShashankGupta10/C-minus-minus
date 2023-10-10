@@ -19,9 +19,9 @@ public:
         while (curr->next) {
             if (trav) {
                 if (curr->val < trav->val ) {
-                ans.push_back(trav->val);
-                curr = curr->next;
-                trav = curr->next;
+                    ans.push_back(trav->val);
+                    curr = curr->next;
+                    trav = curr->next;
                 }
                 else trav = trav->next;
             }
