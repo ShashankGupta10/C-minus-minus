@@ -24,11 +24,6 @@ public:
 
         dfs(root1, ans1);
         dfs(root2, ans2);
-
-        if (ans1.size() != ans2.size()) return false;       
-        for (int i = 0; i < ans1.size(); i++) {
-            if (ans1[i] != ans2[i]) return false;
-        }
-        return true;
+        return ans1 == ans2;
     }
 };
