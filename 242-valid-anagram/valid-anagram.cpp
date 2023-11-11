@@ -1,23 +1,17 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        if (s.size() != t.size()) {
-            return false;
+        unordered_map<char, int> mp;
+        for (char i: s) {
+            mp[i]++;
         }
-
-        unordered_map<char, int> letterCount;
-
-        for (char letter : s) {
-            letterCount[letter]++;
+        for (char i: t) {
+            if (mp.find(i)!=mp.end()) mp[i]--;
+            else return false;
         }
-
-        for (char letter : t) {
-            if (letterCount.find(letter) == letterCount.end() || letterCount[letter] == 0) {
-                return false;
-            }
-            letterCount[letter]--;
+        for(int i=0;i<mp.size();++i) {
+            if (mp[i]!=0) return false;
         }
-
         return true;
     }
 };
