@@ -12,9 +12,9 @@
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
-        if(!root) return 0;
-        int maxLeft = maxDepth(root->left);
-        int maxRight = maxDepth(root->right);
-        return max(maxLeft, maxRight)+1;
+        if (!root) return 0;
+        int l = 1 + maxDepth(root -> left);
+        int r = 1 + maxDepth(root -> right);
+        return max(l, r);
     }
 };
