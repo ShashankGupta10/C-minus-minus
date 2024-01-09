@@ -4,7 +4,10 @@ public:
         int count = 0;
         bool val = false;
         for (int i=0;i<arr1.size(); i++) {
-            for (int j=0;j<arr2.size(); j++) if (abs(arr1[i] - arr2[j]) <= d) val = true;
+            for (int j=0;j<arr2.size(); j++) if (abs(arr1[i] - arr2[j]) <= d) {
+                val = true;
+                break;
+            }
             if (!val) count++;
             else val = false;
         }
