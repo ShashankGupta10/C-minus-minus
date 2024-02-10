@@ -1,16 +1,11 @@
-#include <vector>
-using namespace std;
-
 class Solution {
 public:
+    int helper(int n,int k){
+        int ans = 0;
+        for(int i = 1; i <= n; i++) ans = (ans + k) % i;
+        return ans;
+    }
     int findTheWinner(int n, int k) {
-        vector<int> v(n);
-        for (int i = 0; i < n; i++) v[i] = i + 1;
-        int it = 0;
-        while (v.size() != 1) {
-            it = (it + k - 1) % v.size();
-            v.erase(v.begin() + it);
-        }
-        return v[0];
+        return helper(n, k) + 1;
     }
 };
